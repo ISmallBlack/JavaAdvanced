@@ -31,7 +31,9 @@
         <module>learn-hibernateValidator</module>
         <module>learn-others</module>
         <module>learn-algorithmsDataStructures</module>
-        <module>learn-tutorials</module>
+        <module>learn-qrcode</module>
+        <module>learn-base</module>
+        <module>learn-image</module>
     </modules>
 
     <dependencies>

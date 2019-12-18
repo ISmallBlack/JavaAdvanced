@@ -26,7 +26,16 @@ public class IntegerBucketSorterUnitTest {
         List<Integer> actual = sorter.sort(unsorted);
 
         assertEquals(expected, actual);
+    }
 
+    @Test
+    public void givenUnsortedList_whenSortedUsingBucketSorter_checkSortingCorrect_Another() {
 
+        List<Integer> unsorted = Arrays.asList(80,50,60,30,20,10,70,0,40,500,600,602,200,15);
+        List<Integer> expected = Arrays.asList(0,10,15,20,30,40,50,60,70,80,200,500,600,602);
+
+        List<Integer> actual = sorter.anotherAort(unsorted);
+
+        assertEquals(expected, actual);
     }
 }
