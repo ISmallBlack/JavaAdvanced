@@ -34,6 +34,8 @@
         <module>learn-qrcode</module>
         <module>learn-base</module>
         <module>learn-image</module>
+        <module>learn-iofile</module>
+        <module>learn-log</module>
     </modules>
 
     <dependencies>

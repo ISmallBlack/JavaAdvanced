@@ -1,0 +1,7 @@
+<included>
+    <appender name="includedConsole" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d - %m%n</pattern>
+        </encoder>
+    </appender>
+</included>

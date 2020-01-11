@@ -1,0 +1,243 @@
+<!--测试默认配置-->
+<!--
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>-->
+
+<!--通过配置文件打印内部状态信息 -->
+<!--<configuration debug="true">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>-->
+
+<!-- 通过statusListener打印内部状态信息 -->
+<!--<configuration >
+<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+</appender>
+<statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
+<root level="debug">
+    <appender-ref ref="STDOUT" />
+</root>
+</configuration>-->
+
+
+<!-- 自动加载 DelayingShutdownHook 可以用来释放资源 -->
+<!--<configuration scan="true" scanPeriod="2 seconds">
+<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+</appender>
+<statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
+<shutdownHook class="com.zhangch.protogenesislogback.configuration.DelayingShutdownHook" />
+<root level="debug">
+    <appender-ref ref="STDOUT" />
+</root>
+</configuration>-->
+
+<!-- 同时配置 控制台和文件-->
+<!--
+<configuration>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>myApp.log</file>
+        <encoder>
+            <pattern>
+                %date %level [%thread] %logger{10} [%file:%line] %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>-->
+
+<!-- STDOUT 即配置在root 又在 logger上 会重复打印-->
+<!--<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.zhangch.protogenesislogback.configuration">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>-->
+<!-- 不同的日志分开打印-->
+<!--
+<configuration>
+<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>myApp.log</file>
+    <encoder>
+        <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+    </encoder>
+</appender>
+
+<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+        <pattern>%msg%n</pattern>
+    </encoder>
+</appender>
+
+<logger name="chapters.configuration">
+    <appender-ref ref="FILE" />
+</logger>
+
+<root level="debug">
+    <appender-ref ref="STDOUT" />
+</root>
+</configuration>-->
+
+<!-- additivity测试-->
+<!--
+<configuration>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>foo.log</file>
+        <encoder>
+            <pattern>%date %level [%thread] %logger{10} [%file : %line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="chapters.configuration.Foo" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>-->
+
+<!-- contextName-->
+<!--<configuration>
+    <contextName>myAppName</contextName>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d %contextName [%t] %level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>-->
+
+
+<!-- property变量 scope作用范围  local，context，system  假设变量 aName 没有被定义，"${aNme:-golden}" 会被解释成 "golden"  -->
+<!--<configuration>
+&lt;!&ndash;
+<property name="USER_NAME" value="/data/logs" />
+&ndash;&gt;
+ <property resource="variables1.properties"/>
+     <property scope="context" name="nodeId" value="firstNode"/>
+<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>${USER_NAME:-golden}/myApp.log</file>
+    <encoder>
+        <pattern>%msg%n</pattern>
+    </encoder>
+</appender>
+
+<root level="debug">
+    <appender-ref ref="FILE" />
+</root>
+</configuration>-->
+
+<!-- 测试 HOSTNAME CONTEXT_NAME-->
+<!--
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${HOSTNAME} - ${CONTEXT_NAME}- %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>-->
+
+<!-- 测试 动态参数-->
+<!--<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONTEXT_NAME} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <define name="rootLevel" class="com.zhangch.protogenesislogback.configuration.TestPropertyDefiner">
+        <shape>round</shape>
+        <color>brown</color>
+        <size>24</size>
+    </define>
+    <root level="${rootLevel}">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>-->
+
+
+ <!-- 测试 引入文件-->
+<!--
+<configuration>
+&lt;!&ndash;
+<include file="D:\project_java\ideaworkspace_learn\CodeDemo\java\JavaAdvanced\learn-log\src\main\resources\includedConfig.xml" />
+&ndash;&gt;
+    <include resource="includedConfig.xml"/>
+    <root level="DEBUG">
+    <appender-ref ref="includedConsole" />
+</root>
+</configuration>-->
+
+<!-- 测试 引入文件-->
+ <configuration>
+    <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>/wombat/%d{yyyy/MM}/foo-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <!--日志大小-->
+            <maxFileSize>100MB</maxFileSize>
+            <!--日志文件保留天数-->
+            <maxHistory>6</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+            <root level="debug">
+                <appender-ref ref="ROLLINGFILE" />
+            </root>
+</configuration>
