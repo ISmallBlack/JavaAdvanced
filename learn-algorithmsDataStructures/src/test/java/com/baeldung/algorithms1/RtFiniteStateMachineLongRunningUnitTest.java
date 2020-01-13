@@ -1,6 +1,7 @@
 package com.baeldung.algorithms1;
 
 import com.baeldung.algorithms1.automata.*;
+import com.baeldung.algorithms6.mcts.montecarlo.State;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
