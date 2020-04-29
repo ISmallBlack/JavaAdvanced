@@ -1,20 +1,28 @@
 package com.github.hui.quick.plugin.test;
 
 
+import cn.hutool.core.img.ImgUtil;
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.StrUtil;
 import com.google.zxing.ChecksumException;
 import com.google.zxing.FormatException;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.WriterException;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.zhangch.javaknowledge.utils.Base64Util;
+import com.zhangch.javaknowledge.utils.FileWriteUtil;
+import helper.QrCodeGenerateHelper;
 import junit.framework.Assert;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import wrapper.QrCodeDeWrapper;
 import wrapper.QrCodeGenWrapper;
+import wrapper.QrCodeGenWrapper.Builder;
 import wrapper.QrCodeOptions;
 
 import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageOutputStream;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -39,6 +47,30 @@ public class QrCodeWrapperTest {
     }
 
 
+    /**
+     * 测试二维码
+     */
+    @Test
+    public void testGenQrCodeSuper() {
+        String msg = "BM SOLAR TSW ce 500W 48V @ H202004";
+        for(int i = 1;i < 2 ;i++){
+            try {
+                String othermsg = msg + StrUtil.fillBefore(String.valueOf(i),'0',3);
+                Builder builder = QrCodeGenWrapper.of(othermsg);
+                Font font = new Font("微软雅黑",Font.PLAIN,20);;
+                BufferedImage top = QrCodeGenerateHelper.createImage("TSW ce 500W",font ,Color.WHITE,Color.BLACK,builder.getW());
+                BufferedImage image = QrCodeGenerateHelper.mergeImage(false,top, builder.asBufferedImage());
+                File file = new File("src/test/TOP/"+othermsg+".png");
+                FileWriteUtil.mkDir(file.getParentFile());
+                ImageIO.write(image, "png", file);
+            } catch (Exception e) {
+                System.out.println("create qrcode error! e: " + e);
+                Assert.assertTrue(false);
+            }
+        }
+
+
+    }
     /**
      * 测试二维码
      */

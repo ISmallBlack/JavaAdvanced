@@ -1,9 +1,10 @@
 package com.zhangch.javaknowledge.gif;
 
 
+import com.zhangch.javaknowledge.utils.FileReadUtil;
+import com.zhangch.javaknowledge.utils.FileWriteUtil;
 import org.apache.commons.lang3.tuple.ImmutablePair;
-import util.FileReadUtil;
-import util.FileWriteUtil;
+
 
 import java.awt.image.BufferedImage;
 import java.io.*;

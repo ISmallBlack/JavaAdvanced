@@ -44,7 +44,7 @@ public class FileUtilTest {
         FileUtil.getReader(FileUtil.file("E:\\FileTest\\sss.txt"), CharsetUtil.CHARSET_UTF_8).lines().forEach(System.out::println);
         String url = "http://ww1.sinaimg.cn/large/8154e929gy1g8pq78mcgrg20dw0boaja.gif";
         //远程文件下载
-        //FileUtil.readUtf8Lines(URLUtil.url(url)).stream().map(str->str.getBytes()).forEach(System.out::println);
+        FileUtil.readUtf8Lines(URLUtil.url(url)).stream().map(str->str.getBytes()).forEach(System.out::println);
         String alllines = FileReader.create(FileUtil.file("E:\\FileTest\\sss.txt")).read((BufferedReader reader) -> reader.lines().collect(Collectors.joining(";")));
         System.out.println(alllines);
         FileReader.create(FileUtil.file("E:\\FileTest\\sss.txt")).readLines((LineHandler) System.out::println);
