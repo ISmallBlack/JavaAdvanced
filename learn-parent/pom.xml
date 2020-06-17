@@ -64,6 +64,7 @@
         <bouncycastle.version>1.64</bouncycastle.version>
         <jasypt-spring-boot-starter.version>2.1.2</jasypt-spring-boot-starter.version>
         <jsch.version>0.1.55</jsch.version>
+        <elasticsearch.version>7.6.2</elasticsearch.version>
 
         <!-- 配置中心 -->
         <apollo.client.version>1.5.1</apollo.client.version>

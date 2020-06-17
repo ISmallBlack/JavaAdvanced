@@ -28,7 +28,7 @@
         <module>learn-annotation</module>
         <module>learn-concurrency</module>
         <module>learn-rocketmq</module>
-        <module>learn-hibernateValidator</module>
+        <module>learn-cache</module>
         <module>learn-others</module>
         <module>learn-algorithmsDataStructures</module>
         <module>learn-qrcode</module>
@@ -36,6 +36,7 @@
         <module>learn-image</module>
         <module>learn-iofile</module>
         <module>learn-log</module>
+        <module>learn-elasticsearch</module>
     </modules>
 
     <dependencies>
