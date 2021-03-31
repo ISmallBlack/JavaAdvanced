@@ -58,7 +58,7 @@
         <mail.version>1.4.7</mail.version>
         <objenesis.version>2.6</objenesis.version>
         <aviator.version>4.1.2</aviator.version>
-        <guava.version>28.1-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <dom4j.version>2.1.1</dom4j.version>
         <transmittable-thread-local.version>2.11.0</transmittable-thread-local.version>
         <bouncycastle.version>1.64</bouncycastle.version>
