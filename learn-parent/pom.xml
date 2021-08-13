@@ -61,7 +61,7 @@
         <guava.version>28.1-jre</guava.version>
         <dom4j.version>2.1.1</dom4j.version>
         <transmittable-thread-local.version>2.11.0</transmittable-thread-local.version>
-        <bouncycastle.version>1.64</bouncycastle.version>
+        <bouncycastle.version>1.67</bouncycastle.version>
         <jasypt-spring-boot-starter.version>2.1.2</jasypt-spring-boot-starter.version>
         <jsch.version>0.1.55</jsch.version>
         <elasticsearch.version>7.6.2</elasticsearch.version>
