@@ -49,7 +49,7 @@
         <!-- 基础工具 -->
         <cglib.version>3.2.12</cglib.version>
         <javassist.version>3.26.0-GA</javassist.version>
-        <fastjson.version>1.2.62</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <hutool.version>5.0.7</hutool.version>
         <poi.version>4.1.1</poi.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>
