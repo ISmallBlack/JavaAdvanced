@@ -53,7 +53,7 @@
         <hutool.version>5.0.7</hutool.version>
         <poi.version>4.1.1</poi.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>
-        <commons.net.version>3.6</commons.net.version>
+        <commons.net.version>3.9.0</commons.net.version>
         <kaptcha.version>2.3.2</kaptcha.version>
         <mail.version>1.4.7</mail.version>
         <objenesis.version>2.6</objenesis.version>
